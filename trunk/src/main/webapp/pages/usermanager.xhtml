@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+    <title>
+        JAVA EE 8 MICROSERVICE BY OMID.HAGHIGHATGOO@GMAIL.COM
+    </title>
+</h:head>
+
+
+<h:body>
+    <h:form>
+        <div style="direction: ltr">
+            <div>
+                <p:outputLabel value="name:" for="name"/>
+                <p:inputText id="name" value="#{userBean.name}"/>
+            </div>
+            <div>
+                <p:outputLabel value="family:" for="family"/>
+                <p:inputText id="family" value="#{userBean.family}"/>
+            </div>
+            <div>
+                <p:outputLabel value="username:" for="username"/>
+                <p:inputText id="username" value="#{userBean.username}"/>
+            </div>
+        </div>
+        <div>
+            <p:commandButton value="Create User" id="create" update="table1" actionListener="#{userBean.createUser}"/>
+        </div>
+        <br/>
+
+        <p:commandButton value="Report Users" id="ajax" update="table1" actionListener="#{userBean.loadUsers}"/>
+        <p:dataTable var="user" value="#{userBean.users}" id="table1">
+            <p:column headerText="Id">
+                <h:outputText value="#{user.userId}"/>
+            </p:column>
+
+            <p:column headerText="NAME">
+                <h:outputText value="#{user.name}"/>
+            </p:column>
+
+            <p:column headerText="FAMILY">
+                <h:outputText value="#{user.family}"/>
+            </p:column>
+
+            <p:column headerText="USERNAME">
+                <h:outputText value="#{user.userName}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+
+</h:body>
+</html>
